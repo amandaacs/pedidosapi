@@ -1,0 +1,60 @@
+🟦 1. Preparação do repositório
+Commit 1 — chore: inicializa repositório com estrutura base
+Conteúdo:
+• Criação do repositório vazio
+• .gitignore para Java, Angular e IDEs
+• README inicial com descrição do desafio
+---
+🟩 BACKEND (Java + Spring Boot)
+🟩 2. Setup inicial do backend
+Commit 2 — feat(backend): cria projeto Spring Boot e configura dependências
+Inclui:
+• Projeto gerado pelo Spring Initializr
+• Dependências: Web, JPA, Validation
+• Configuração inicial do SQLite no application.properties
+---
+🟩 3. Modelagem do domínio
+Commit 3 — feat(backend): adiciona entidades JPA (Customer, Product, Order, OrderItem, Payment)
+Inclui:
+• Todas as entidades mapeadas
+• Relacionamentos e constraints
+---
+🟩 4. Repositórios
+Commit 4 — feat(backend): cria repositórios JPA para todas as entidades
+---
+🟩 5. Serviços e regras de negócio
+Commit 5 — feat(backend): implementa ProductService com filtros
+Commit 6 — feat(backend): implementa OrderService com criação de pedido e cálculo de total
+Commit 7 — feat(backend): implementa PaymentService com atualização de status
+---
+🟩 6. DTOs e Controllers
+Commit 8 — feat(backend): adiciona DTOs para requests e responses
+Commit 9 — feat(backend): cria controllers REST (products, orders, payments)
+---
+🟩 7. Tratamento de erros
+Commit 10 — feat(backend): adiciona handler global de exceções com mensagens claras
+---
+🟩 8. Dados iniciais (opcional)
+Commit 11 — chore(backend): adiciona CommandLineRunner para popular dados de teste
+---
+🟧 FRONTEND (Angular)
+🟧 9. Setup inicial do Angular
+Commit 12 — feat(frontend): cria projeto Angular com routing
+---
+🟧 10. Serviços de API
+Commit 13 — feat(frontend): adiciona ApiService para comunicação com backend
+---
+🟧 11. Página de produtos + filtros + carrinho
+Commit 14 — feat(frontend): implementa listagem de produtos com filtros
+Commit 15 — feat(frontend): implementa carrinho local e totalizador
+Commit 16 — feat(frontend): integra carrinho com POST /orders
+---
+🟧 12. Página de pedidos
+Commit 17 — feat(frontend): cria listagem de pedidos
+Commit 18 — feat(frontend): cria página de detalhes do pedido
+---
+🟧 13. Ajustes finais e UI
+Commit 19 — style(frontend): melhora layout e responsividade
+---
+🟫 14. Documentação final
+Commit 20 — docs: atualiza README com instruções de execução e arquitetura
