@@ -7,7 +7,7 @@ Conteúdo:
 ---
 🟩 BACKEND (Java + Spring Boot)
 🟩 2. Setup inicial do backend
-Commit 2 — feat(backend): cria projeto Spring Boot e configura dependências
+Commit 2 — feat(backend): cria projeto Spring Boot e configura dependências OK
 Inclui:
 • Projeto gerado pelo Spring Initializr
 • Dependências: Web, JPA, Validation
