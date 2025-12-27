@@ -6,6 +6,7 @@ import com.project.pedidosapi.dto.OrderResponse;
 import com.project.pedidosapi.dto.PaymentResponse;
 import com.project.pedidosapi.entity.Order;
 import com.project.pedidosapi.entity.OrderItem;
+import com.project.pedidosapi.exception.BusinessException;
 import com.project.pedidosapi.repository.CustomerRepository;
 import com.project.pedidosapi.repository.OrderRepository;
 import com.project.pedidosapi.repository.ProductRepository;
@@ -31,14 +32,14 @@ public class OrderService {
 
     public OrderResponse getOrderById(Long id) {
         var order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+                .orElseThrow(() -> new BusinessException("Pedido não encontrado"));
 
         return toResponse(order);
     }
 
     public OrderResponse createOrder(CreateOrderRequest request) {
         var customer = customerRepository.findById(request.customerId())
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                .orElseThrow(() -> new BusinessException("Cliente não encontrado"));
 
         var order = new Order();
         order.setCustomer(customer);
@@ -48,7 +49,7 @@ public class OrderService {
         List<OrderItem> items =  request.items().stream()
                 .map(i -> {
                     var product = productRepository.findById(i.productId())
-                            .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
+                            .orElseThrow(() -> new BusinessException("Produto não encontrado"));
 
                     var item = new OrderItem();
                     item.setOrder(order);

@@ -3,6 +3,7 @@ package com.project.pedidosapi.service;
 import com.project.pedidosapi.dto.CreatePaymentRequest;
 import com.project.pedidosapi.dto.PaymentResponse;
 import com.project.pedidosapi.entity.Payment;
+import com.project.pedidosapi.exception.BusinessException;
 import com.project.pedidosapi.repository.OrderRepository;
 import com.project.pedidosapi.repository.PaymentRepository;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ public class PaymentService {
     public PaymentResponse registerPayment(CreatePaymentRequest request) {
 
         var order = orderRepository.findById(request.orderId())
-                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+                .orElseThrow(() -> new BusinessException("Pedido não encontrado"));
 
         var payment = new Payment();
         payment.setOrder(order);

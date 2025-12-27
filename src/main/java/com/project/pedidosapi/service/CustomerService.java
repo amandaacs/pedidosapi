@@ -1,6 +1,7 @@
 package com.project.pedidosapi.service;
 
 import com.project.pedidosapi.dto.CustomerResponse;
+import com.project.pedidosapi.exception.BusinessException;
 import com.project.pedidosapi.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +16,7 @@ public class CustomerService {
 
     public CustomerResponse get(Long id) {
         var customer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                .orElseThrow(() -> new BusinessException("Cliente não encontrado"));
 
         return new CustomerResponse(
                 customer.getId(),
