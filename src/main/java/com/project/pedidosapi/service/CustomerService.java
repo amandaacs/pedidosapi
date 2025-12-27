@@ -2,7 +2,9 @@ package com.project.pedidosapi.service;
 
 import com.project.pedidosapi.dto.CustomerResponse;
 import com.project.pedidosapi.repository.CustomerRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class CustomerService {
 
     private final CustomerRepository customerRepository;

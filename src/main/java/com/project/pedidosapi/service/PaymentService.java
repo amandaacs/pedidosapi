@@ -5,9 +5,11 @@ import com.project.pedidosapi.dto.PaymentResponse;
 import com.project.pedidosapi.entity.Payment;
 import com.project.pedidosapi.repository.OrderRepository;
 import com.project.pedidosapi.repository.PaymentRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class PaymentService {
 
     private final PaymentRepository paymentRepository;

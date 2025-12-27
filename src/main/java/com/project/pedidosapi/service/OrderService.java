@@ -9,11 +9,12 @@ import com.project.pedidosapi.entity.OrderItem;
 import com.project.pedidosapi.repository.CustomerRepository;
 import com.project.pedidosapi.repository.OrderRepository;
 import com.project.pedidosapi.repository.ProductRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class OrderService {
 
     private final OrderRepository orderRepository;
@@ -26,6 +27,13 @@ public class OrderService {
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.customerRepository = customerRepository;
+    }
+
+    public OrderResponse getOrderById(Long id) {
+        var order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        return toResponse(order);
     }
 
     public OrderResponse createOrder(CreateOrderRequest request) {
