@@ -20,6 +20,7 @@ public class OrderController {
         return orderService.createOrder(request);
     }
 
+    @GetMapping
     public OrderResponse get(@PathVariable Long id) {
         return orderService.getOrderById(id);
     }

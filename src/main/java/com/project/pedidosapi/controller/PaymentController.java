@@ -3,6 +3,7 @@ package com.project.pedidosapi.controller;
 import com.project.pedidosapi.dto.CreatePaymentRequest;
 import com.project.pedidosapi.dto.PaymentResponse;
 import com.project.pedidosapi.service.PaymentService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ public class PaymentController {
         this.paymentService = paymentService;
     }
 
+    @PostMapping
     public PaymentResponse register(@RequestBody CreatePaymentRequest request){
         return paymentService.registerPayment(request);
     }
