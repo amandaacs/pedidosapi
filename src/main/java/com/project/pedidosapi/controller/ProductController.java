@@ -4,6 +4,7 @@ import com.project.pedidosapi.dto.ProductResponse;
 import com.project.pedidosapi.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -18,9 +19,15 @@ public class ProductController {
         this.productService = productService;
     }
 
+
     @GetMapping
-    public List<ProductResponse> listActive() {
-        return productService.listActive();
+    public List<ProductResponse> list(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String category,
+            @RequestParam(required = false) Boolean active
+    ) {
+        return productService.list(name, category, active);
     }
+
 
 }

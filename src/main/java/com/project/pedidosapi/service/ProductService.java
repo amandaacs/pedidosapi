@@ -15,9 +15,13 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<ProductResponse> listActive(){
-        return productRepository.findByActiveTrue()
-                .stream()
+
+
+    public List<ProductResponse> list(String name, String category, Boolean active) {
+        return productRepository.findAll().stream()
+                .filter(p -> name == null || p.getName().toLowerCase().contains(name.toLowerCase()))
+                .filter(p -> category == null || p.getCategory().equalsIgnoreCase(category))
+                .filter(p -> active == null || p.getActive().equals(active))
                 .map(p -> new ProductResponse(
                         p.getId(),
                         p.getName(),
@@ -27,5 +31,6 @@ public class ProductService {
                 ))
                 .toList();
     }
+
 
 }

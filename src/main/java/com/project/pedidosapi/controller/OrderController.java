@@ -5,6 +5,8 @@ import com.project.pedidosapi.dto.OrderResponse;
 import com.project.pedidosapi.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
@@ -15,12 +17,17 @@ public class OrderController {
         this.orderService = orderService;
     }
 
+    @GetMapping
+    public List<OrderResponse> list() {
+        return orderService.listAll();
+    }
+
     @PostMapping
     public OrderResponse create(@RequestBody CreateOrderRequest request) {
         return orderService.createOrder(request);
     }
 
-    @GetMapping
+    @GetMapping("/{id}")
     public OrderResponse get(@PathVariable Long id) {
         return orderService.getOrderById(id);
     }

@@ -9,6 +9,7 @@ public record OrderResponse(
     String customerName,
     String status,
     LocalDateTime createdAt,
+    Integer totalCents,
     List<OrderItemResponse> items,
     List<PaymentResponse> payments
 ) {}

@@ -34,6 +34,19 @@ public class PaymentService {
 
         paymentRepository.save(payment);
 
+        int totalOrder = order.getItems().stream()
+                .mapToInt(i -> i.getQuantity() * i.getUnitPriceCents())
+                .sum();
+
+        int totalPaid = paymentRepository.findByOrderId(order.getId()).stream()
+                .mapToInt(Payment::getAmountCents)
+                .sum();
+
+        if (totalPaid >= totalOrder) {
+            order.setStatus("PAID");
+            orderRepository.save(order);
+        }
+
         return new PaymentResponse(
                 payment.getId(),
                 payment.getMethod(),
